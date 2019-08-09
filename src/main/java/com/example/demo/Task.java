@@ -1,10 +1,9 @@
 package com.example.demo;
 
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity	
+@Entity
 public class Task {
 	@Id
 	private String taskName;
@@ -21,5 +20,5 @@ public class Task {
 	public String toString() {
 		return "Task [taskName=" + taskName + "]";
 	}
-	
+
 }
