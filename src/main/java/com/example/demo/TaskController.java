@@ -1,8 +1,10 @@
 package com.example.demo;
 
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +17,7 @@ public class TaskController {
 
 	@CrossOrigin(origins = "http://localhost:3000")
 	@RequestMapping("/tasks")
-	Iterable<Task> index() {
+	List<Task> index() {
 		return repo.findAll();
 	}
 
@@ -38,9 +40,9 @@ public class TaskController {
 
 	@CrossOrigin(origins = "http://localhost:3000")
 	@RequestMapping("/editTask")
-	int editBook(@RequestBody String[] tasks) {
-		int updatedTask = repo.editTaskInDB(tasks[0], tasks[1]);
-		return updatedTask;
+	Task editBook(@RequestBody Task task) {
+		repo.save(task);
+		return task;
 	}
 
 }
